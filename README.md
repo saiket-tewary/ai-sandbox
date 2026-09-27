@@ -44,3 +44,7 @@ This repository is intentionally flexible and evolving, shaped by exploration an
 ## Notes
 
 This repo is meant to be a growing collection of experiments, references, and knowledge related to AI and adjacent technologies.
+
+## Working branch
+
+This setup branch is the active development branch for AIY learning experiments, notes, and prototypes.
