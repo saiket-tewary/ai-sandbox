@@ -1,50 +1,121 @@
-# AI Sandbox
+# Agent Learning Sandbox
 
-This repository is a personal learning sandbox for exploring anything and everything related to AIY — the broad world of artificial intelligence, machine learning, data, automation, experimentation, and practical implementation.
+This repository contains two simple agent examples built for learning how agents work with tools:
 
-## Purpose
+1. OpenAI-powered tool-calling agent
+2. Local Ollama-based agent
 
-The goal of this repo is to:
+Both are intentionally beginner-friendly and designed to teach the basic flow of:
 
-- learn AI concepts hands-on
-- try small experiments and prototypes
-- collect notes, code snippets, and examples
-- build understanding from fundamentals to real-world usage
-- document progress while exploring tools and techniques
+- understanding a user request
+- deciding whether to call a tool
+- executing a tool
+- sending results back to the model
+- returning a final answer
 
-## What this repository includes
+## Files
 
-This workspace may contain:
+- [examples/weather_agent.py](examples/weather_agent.py) — OpenAI tool-calling agent
+- [examples/weather-agent-ollama.py](examples/weather-agent-ollama.py) — local Ollama tool-calling agent
 
-- Python experiments
-- model and prompt explorations
-- notebooks and scripts
-- learning notes
-- sample projects
-- AI tooling experiments
-- references and useful resources
+## 1) OpenAI weather agent
 
-## Focus areas
+This version uses the OpenAI SDK and a custom `get_weather` tool.
 
-- Generative AI
-- Large language models (LLMs)
-- Prompt engineering
-- Machine learning fundamentals
-- Data processing and analysis
-- AI workflows and automation
-- Tools, frameworks, and libraries
-- Practical experimentation and research
+### Setup
 
-## Philosophy
+```bash
+cd /Users/saikettewary/repo/ai-sandbox
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+```
 
-Learning in public, testing ideas quickly, and building on curiosity.
+Then add your API key to `.env`:
 
-This repository is intentionally flexible and evolving, shaped by exploration and hands-on practice.
+```bash
+OPENAI_API_KEY=your_key_here
+```
 
-## Notes
+### Run
 
-This repo is meant to be a growing collection of experiments, references, and knowledge related to AI and adjacent technologies.
+```bash
+source .venv/bin/activate
+python examples/weather_agent.py
+```
 
-## Working branch
+### Notes
 
-This setup branch is the active development branch for AIY learning experiments, notes, and prototypes.
+- This version requires OpenAI credits.
+- If your account has no credit remaining, the script will show the quota issue clearly.
+- This is the best example to learn the standard tool-calling pattern with a hosted model.
+
+## 2) Local Ollama weather agent
+
+This version runs fully locally with Ollama and does not require an API key or paid credits.
+
+### Prerequisites
+
+Install Ollama from the official site:
+
+https://ollama.com/download
+
+Then verify the CLI is available:
+
+```bash
+ollama --version
+```
+
+If it is not found, add the binary to your PATH or use the app-installed location:
+
+```bash
+export PATH="/Applications/Ollama.app/Contents/Resources:$PATH"
+```
+
+### Start Ollama and pull a model
+
+In one terminal:
+
+```bash
+ollama serve
+```
+
+In another terminal:
+
+```bash
+ollama pull llama3.2
+```
+
+### Run
+
+```bash
+cd /Users/saikettewary/repo/ai-sandbox
+source .venv/bin/activate
+python examples/weather-agent-ollama.py
+```
+
+### Notes
+
+- This version uses the local Ollama server on `http://localhost:11434`
+- It still follows the same tool-calling pattern as the OpenAI version
+- It is the recommended version for learning locally without paying for API usage
+
+## Comparison
+
+| Version | Model | Cost | Local | Good for |
+|---|---|---:|---:|---|
+| OpenAI agent | OpenAI hosted model | Paid | No | understanding hosted agent/tool loops |
+| Ollama agent | Local model | Free | Yes | learning without quota or API key issues |
+
+## Learning goal
+
+The point of both examples is to understand the basic architecture behind agentic systems:
+
+- prompt and instructions
+- tool definitions
+- function calling
+- result injection
+- final answer generation
+
+These examples are intentionally small but realistic enough to build on for more advanced multi-agent patterns later.
