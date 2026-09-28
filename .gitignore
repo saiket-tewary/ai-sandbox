@@ -1,0 +1,63 @@
+# Python environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python build and cache artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Dependency and package manager downloads
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+adist/
+build/
+dist/
+site-packages/
+
+# Binary and compiled output
+*.exe
+*.dll
+*.so
+*.dylib
+*.bin
+*.app/
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.whl
+
+# Local notebooks and scratch data
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+*.sqlite3
+*.db
+
+# Editor and OS noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs, temp, and backup files
+*.log
+*.tmp
+*.bak
+*.orig
+
+# Git metadata
+.gitkeep
+
+# Keep example source tracked, but ignore runtime outputs
+examples/__pycache__/
+examples/.ipynb_checkpoints/
